@@ -1,0 +1,25 @@
+{
+  "name": "assigned",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zk33/assigned.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zk33/assigned/issues"
+  },
+  "homepage": "https://github.com/zk33/assigned",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "gulp": "^3.8.7",
+    "gulp-shell": "^0.2.9"
+  }
+}
