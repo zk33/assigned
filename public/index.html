@@ -8,21 +8,23 @@
 
 <div ng-controller="MainController">
 
-<a href="javascript:void(0)" ng-click="auth()">login</a>
-{{error}}
-
+<a href="javascript:void(0)" ng-click="auth()" ng-hide="loggingin||loggedin">login</a>
+<span ng-show="loggingin">connecting...</span>
 assigned tasks: {{ issues.length }}
+
+<p class="error">{{error}}</p>
+
 
 <ul class="repos">
 <li class="repo" ng-repeat="repo in repos" style="display:inline">
-<a href="{{repo.url}}">{{repo.login}}</a>
+<a href="https://github.com/{{repo.login}}/" target="_blank">{{repo.login}}</a>
 </li>
 </ul>
 
 <ul class="issues">
 <li class="issue" ng-repeat="issue in issues">
 [{{issue.repository.owner.login}}/{{issue.repository.name}}]
-<a href="{{issue.html_url}}">{{issue.title}}</a>
+<a href="{{issue.html_url}}" target="_blank">{{issue.title}}</a>
 <span class="label" ng-repeat="label in issue.labels">{{ label.name }}</span>
 </li>
 </ul>
