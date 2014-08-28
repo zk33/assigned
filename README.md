@@ -1,5 +1,7 @@
 githubで自分にassignされてるタスクをOrganization縦断でまとめて見たくて作っただけのナニカ。
 
+http://assigned.en-gawa.net/
+
 # 使いかた
 
 + `public/id.js.base`を`public/id.js`にコピー
