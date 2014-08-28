@@ -9,6 +9,7 @@
 <div ng-controller="MainController">
 
 <a href="javascript:void(0)" ng-click="auth()" ng-hide="loggingin||loggedin">login</a>
+<a href="javascript:void(0)" ng-click="load()" ng-show="loggedin">reload</a>
 <span ng-show="loggingin">connecting...</span>
 assigned tasks: {{ issues.length }}
 
