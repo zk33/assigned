@@ -9,7 +9,6 @@ angular.module('App', [])
     var getIssues = function(api,url){
       api.get(url)
       .done(function(res){
-        console.log(res);
         $scope.$apply(function(){ $scope.issues = $scope.issues.concat(res); });
         orgCount--;
         if(orgCount<=0){
