@@ -5,6 +5,20 @@
 <title>assigned</title>
 <style>
 .issue-repo a{ text-decoration:none; }
+.issue-md{
+  position:absolute;
+  right:1em;
+  top:1em;
+  width:20%;
+  white-space:nowrap;
+  box-sizing:border-box;
+  border:1px solid #CCC;
+  padding:1em;
+  font-size:13px;
+  font-family:monospace;
+  margin:2em;
+  overflow:auto;
+}
 </style>
 </head>
 <body ng-app="App">
@@ -27,6 +41,7 @@ assigned tasks: {{ issues.length }}
 
 <ul class="issues">
 <li class="issue" ng-repeat="issue in issues">
+<input type="checkbox" ng-model="issue.__checked">
 <span class="issue-repo">
 [<a href="https://github.com/{{issue.repository.owner.login}}/" target="_blank">{{issue.repository.owner.login}}</a>/<a href="https://github.com/{{issue.repository.owner.login}}/{{issue.repository.name}}" target="_blank">{{issue.repository.name}}</a>]
 </span>
@@ -35,6 +50,24 @@ assigned tasks: {{ issues.length }}
 <span class="label" ng-repeat="label in issue.labels">{{ label.name }} </span>
 </li>
 </ul>
+
+<div ng-click="select()" id="md" class="issue-md" ng-show="(issues | filter:{__checked:true}).length > 0">
+<div ng-repeat="issue in issues | filter:{__checked:true}">
+- [ ]
+<span ng-if="issue.repository.private">
+\[{{issue.repository.owner.login | limitTo:3}}../{{issue.repository.name | limitTo:3}}..\]
+#{{issue.number}}
+{{issue.title}}
+</span>
+<span ng-if="!issue.repository.private">
+\[[{{ issue.repository.owner.login }}](https://github.com/{{issue.repository.owner.login}}/)/[{{ issue.repository.name}}](https://github.com/{{issue.repository.owner.login}}/{{issue.repository.name}})\]
+#{{issue.number}}
+[{{issue.title}}]({{issue.html_url}})
+</span>
+
+</div>
+</div>
+
 
 </div>
 

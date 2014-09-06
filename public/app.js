@@ -1,4 +1,3 @@
-
 OAuth.initialize(OAUTH_ID);
 
 angular.module('App', [])
@@ -9,6 +8,7 @@ angular.module('App', [])
     var getIssues = function(api,url){
       api.get(url)
       .done(function(res){
+        console.log(res);
         $scope.$apply(function(){ $scope.issues = $scope.issues.concat(res); });
         orgCount--;
         if(orgCount<=0){
@@ -32,6 +32,7 @@ angular.module('App', [])
 
       api.get('/user/orgs')
       .done(function(res){
+        console.log(res);
         $scope.$apply(function(){ $scope.repos = res; });
         getIssues(api,'/user/issues?filter=assigned');
         orgCount = res.length + 1;
@@ -53,6 +54,17 @@ angular.module('App', [])
         $scope.error='Auth error';
       });
     };
+    $scope.select = function(){
+      if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById('md'));
+        range.select();
+      } else if (window.getSelection) {
+        var range = document.createRange();
+        range.selectNode(document.getElementById('md'));
+        window.getSelection().addRange(range);
+      }
+    }
   }]);
 
 
